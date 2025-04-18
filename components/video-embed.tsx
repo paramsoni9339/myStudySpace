@@ -10,7 +10,7 @@ export default function VideoEmbed() {
   const [embedUrl, setEmbedUrl] = useState("")
   const [error, setError] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!url) {
@@ -21,11 +21,14 @@ export default function VideoEmbed() {
     try {
       // Handle YouTube URLs
       if (url.includes("youtube.com") || url.includes("youtu.be")) {
-        let videoId = ""
+        let videoId: string = ""
 
         if (url.includes("youtube.com/watch")) {
           const urlParams = new URLSearchParams(new URL(url).search)
-          videoId = urlParams.get("v")
+          const paramValue = urlParams.get("v")
+          if (paramValue) {
+            videoId = paramValue
+          }
         } else if (url.includes("youtu.be/")) {
           videoId = url.split("youtu.be/")[1].split("?")[0]
         }
@@ -58,7 +61,12 @@ export default function VideoEmbed() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full rounded-xl border border-slate-200 dark:border-slate-800 p-4">
+      <h2 className="text-xl font-semibold flex items-center gap-2 mb-4">
+        <Youtube className="w-5 h-5" />
+        Study Videos
+      </h2>
+      
       <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
         <Input
           type="text"

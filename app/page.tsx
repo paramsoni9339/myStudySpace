@@ -4,13 +4,15 @@ import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Sun, Moon } from "lucide-react"
-import AnalogClock from "@/components/analog-clock"  // Changed to default import
-import Calendar from "@/components/calendar"         // Changed to default import
-import VideoEmbed from "@/components/video-embed"   // Changed to default import
-import Tasks from "@/components/tasks"              // Changed to default import
-import FloatingTimer from "@/components/floating-timer" // Changed to default import
-import Notes from "@/components/notes"              // Changed to default import
-import { BackgroundPaths } from "@/components/BackgroundPaths" // Fixed casing
+import AnalogClock from "@/components/analog-clock"  
+import Calendar from "@/components/calendar"         
+import VideoEmbed from "@/components/video-embed"   
+import Tasks from "@/components/tasks"             
+import FloatingTimer from "@/components/floating-timer" 
+import Notes from "@/components/notes"              
+import { BackgroundPaths } from "@/components/BackgroundPaths" 
+import StudySpaceAI from "@/components/study-space-ai"
+import { GlowingBackground } from "@/components/ui/glow-background"
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -43,20 +45,33 @@ export default function Home() {
             <div className="lg:col-span-2">
               <div className="flex flex-col gap-6">
                 {/* Clock Section */}
-                <section id="clock-section" className="flex justify-center">
+                <section id="clock-section" className="relative flex justify-center">
                   <AnalogClock />
                 </section>
 
                 {/* Calendar Section */}
-                <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-white/20 dark:border-slate-700/20">
-                  <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">Calendar</h2>
-                  <Calendar />
+                <section className="relative backdrop-blur-xl bg-white/30 dark:bg-slate-800/30 rounded-3xl shadow-xl border border-white/30 dark:border-slate-700/30 p-6 overflow-hidden">
+                  <GlowingBackground />
+                  <div className="relative z-10">
+                    <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">Calendar</h2>
+                    <Calendar />
+                  </div>
                 </section>
 
                 {/* Video Embed Section */}
-                <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-white/20 dark:border-slate-700/20">
-                  <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">Study Material</h2>
-                  <VideoEmbed />
+                <section className="relative backdrop-blur-xl bg-white/30 dark:bg-slate-800/30 rounded-3xl shadow-xl border border-white/30 dark:border-slate-700/30 p-6 overflow-hidden">
+                  <GlowingBackground />
+                  <div className="relative z-10">
+                    <VideoEmbed />
+                  </div>
+                </section>
+
+                {/* StudySpaceAI Section */}
+                <section className="relative backdrop-blur-xl bg-white/30 dark:bg-slate-800/30 rounded-3xl shadow-xl border border-white/30 dark:border-slate-700/30 p-6 overflow-hidden">
+                  <GlowingBackground />
+                  <div className="relative z-10">
+                    <StudySpaceAI />
+                  </div>
                 </section>
               </div>
             </div>
@@ -64,15 +79,25 @@ export default function Home() {
             <div className="lg:col-span-1">
               <div className="flex flex-col gap-6">
                 {/* Tasks Section */}
-                <Tasks />
+                <section className="relative backdrop-blur-xl bg-white/30 dark:bg-slate-800/30 rounded-3xl shadow-xl border border-white/30 dark:border-slate-700/30 p-6 overflow-hidden">
+                  <GlowingBackground />
+                  <div className="relative z-10">
+                    <Tasks />
+                  </div>
+                </section>
                 
                 {/* Floating Timer */}
-                <FloatingTimer />
+                <section className="relative">
+                  <FloatingTimer />
+                </section>
 
                 {/* Notes Section */}
-                <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-white/20 dark:border-slate-700/20 h-[500px]">
-                  <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">My Notes</h2>
-                  <Notes />
+                <section className="relative backdrop-blur-xl bg-white/30 dark:bg-slate-800/30 rounded-3xl shadow-xl border border-white/30 dark:border-slate-700/30 p-6 overflow-hidden h-[500px]">
+                  <GlowingBackground />
+                  <div className="relative z-10 h-full">
+                    <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">My Notes</h2>
+                    <Notes />
+                  </div>
                 </section>
               </div>
             </div>
