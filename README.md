@@ -1,4 +1,4 @@
-# StudySpace
+# myStudySpace
 
 A modern study dashboard built with Next.js 13, React, and Tailwind CSS.
 
@@ -24,7 +24,7 @@ A modern study dashboard built with Next.js 13, React, and Tailwind CSS.
 
 1. Clone the repository and switch to main branch:
 ```bash
-git clone https://github.com/yourusername/studyspace.git
+git clone 'link here'
 cd studyspace
 git checkout main
 ```
